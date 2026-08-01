@@ -9,21 +9,19 @@
        index.html  +  Vignesh_Athiappan_Resume.pdf
      (File is named index.html so GitHub Pages serves it at the
       root URL — no more /orbit-workspace.html 404 lessons.)
-  2. Confirm links work: github.com/av-vignesh (from your Orbit
-     project). dev.to is a [PLACEHOLDER] — add your handle once
-     you publish there, or delete that link.
+  2. Links live: github.com/av-vignesh · dev.to/vicky_acedia
+     (26 posts). Article links are wired into the Systems rows.
   3. All numbers match resume v6 (50+ workflows, 15+ systems,
-     5,000+ employees, ~25 engineers, 200+ tables, 6.5+ yrs).
+     5,000+ employees, ~25 engineers, 200+ tables, 7.5+ yrs).
      If v7 changes a number, change it here too.
-  4. The three "Field notes" entries have [ADD LINK] markers —
-     wire them up as you publish, or hide that block.
+  4. Field-note links point at published dev.to articles.
   5. Suggested domain: vigneshathiappan.dev / .in
   ============================================================
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vignesh Athiappan — Engineering Lead · Enterprise Systems Architect · AI & Integration Platforms</title>
-<meta name="description" content="Engineering Lead with 6.5+ years building enterprise platforms, multi-agent AI on Microsoft Teams, a 15-system integration backbone, and a Fabric data lake — serving 5,000+ employees, leading ~25 engineers.">
+<meta name="description" content="Engineering Lead with 7.5+ years building enterprise platforms, multi-agent AI on Microsoft Teams, a 15-system integration backbone, and a Fabric data lake — serving 5,000+ employees, leading ~25 engineers.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E5F52'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' fill='%23F5F6F4' text-anchor='middle'%3EVA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,6 +120,7 @@
   .sys-body{padding:4px 20px 18px 166px;color:var(--ink-soft);font-size:.92rem;max-width:60em}
   .sys-body p + p{margin-top:8px}
   .sys-body .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin-right:8px}
+  .sys-body .wlink{font-family:var(--mono);font-size:.7rem;margin-top:10px}
 
   /* ---- recognition & public ---- */
   .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
@@ -227,7 +226,7 @@
       <div class="eyebrow">Engineering Lead · Enterprise Systems Architect · AI &amp; Integration Platforms</div>
       <h1>Vignesh <span class="accent">Athiappan</span></h1>
       <p class="thesis">
-        6.5+ years building the systems <strong>5,000+ employees</strong> run on:
+        7.5+ years building the systems <strong>5,000+ employees</strong> run on:
         a <strong>multi-agent AI assistant on Microsoft Teams</strong>, a real-time
         integration backbone across <strong>15+ systems</strong>, and an enterprise
         <strong>data lake on Fabric</strong> — leading ~25 engineers, shipping
@@ -237,6 +236,7 @@
         <a class="btn solid" href="mailto:aakashvicky23@gmail.com">Email</a>
         <a class="btn" href="https://linkedin.com/in/vignesh-athiappan-a00546139" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://github.com/av-vignesh" rel="noopener">GitHub</a>
+        <a class="btn" href="https://dev.to/vicky_acedia" rel="noopener">dev.to</a>
         <a class="btn" href="Vignesh_Athiappan_Resume.pdf" download>Résumé (PDF)</a>
       </div>
       <p class="avail">Namakkal, Tamil Nadu, India &nbsp;·&nbsp; +91 94863 04676 &nbsp;·&nbsp; [Open to — set your availability line]</p>
@@ -335,6 +335,7 @@
           <p><span class="k">Role</span>Architect &amp; lead. Teams bot in C# / .NET 8 / Bot Framework SDK on Azure App Service; central Logic App router dispatching to 4 production specialist agents (Resource Info, Leave, ADO Sync, Knowledge Base) integrating Pulse, NetSuite, CRM and more. End-to-end observability in Application Insights; 14+ prompt iterations.</p>
           <p><span class="k">Under the hood</span>The Knowledge Base agent is production RAG on Azure AI Search — 15+ country- and domain-specific policy indexes fronted by a query classification + rewriting layer that resolves follow-up questions into self-contained searches. Multilingual via Azure AI Translator.</p>
           <p><span class="k">Next generation</span>Architected 3 next-gen agent systems — L&amp;D Agent, PRM Agent (10 sub-agents), Opportunity Agent (7 sub-agents) — and established reusable patterns: promise-ledger, action registry, domain-driven sub-agent decomposition.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/building-and-deploying-a-microsoft-teams-bot-on-azure-end-to-end-462f" rel="noopener">Public write-up: building &amp; deploying a Teams bot on Azure, end to end →</a></p>
         </div>
       </details>
 
@@ -373,6 +374,7 @@
         </summary>
         <div class="sys-body">
           <p><span class="k">What</span>A knowledge graph built entirely from the code layer — table relationships, per-column definitions, and join paths — designed to power natural-language query answering and automated report generation. The ontology layer between the warehouse and the agents, so schema context stops being hand-fed into every prompt.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/i-built-a-knowledge-graph-for-a-warehouse-with-no-foreign-keys-5fkp" rel="noopener">Public write-up: a knowledge graph for a warehouse with no foreign keys →</a></p>
         </div>
       </details>
 
@@ -386,6 +388,7 @@
         <div class="sys-body">
           <p><span class="k">Scope</span>Driving the security architecture across the estate: least-privilege integration identities (after auditing an over-broad access grant), bulk secret centralization into Key Vault with managed identities, private ILB workflow triggers with API Management as the only public surface, Front Door / WAF rule tuning, and secret-rotation discipline.</p>
           <p><span class="k">Now</span>Building a per-application security assessment framework — methodology and dimensions first, piloted application-by-application before any tooling.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/security-isnt-a-checklist-its-a-quarterly-habit-how-we-protect-our-enterprise-applications-49f5" rel="noopener">Public write-up: security isn't a checklist — it's a quarterly habit →</a></p>
         </div>
       </details>
 
@@ -470,6 +473,7 @@
         </summary>
         <div class="sys-body">
           <p><span class="k">Role</span>JMeter load testing across core platform screens and integration paths (P95 backend 0.72s), read/write contention analysis, and the capacity plan — tier upgrade, load balancing, autoscaling — with monthly cost forecasting to leadership.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/load-testing-a-production-app-on-azure-how-i-ran-it-measured-it-and-what-it-taught-me-28nc" rel="noopener">Public write-up: load-testing a production app on Azure →</a></p>
         </div>
       </details>
 
@@ -502,9 +506,9 @@
         <div class="k">In public / currently sharpening</div>
         <ul>
           <li><strong><a href="https://github.com/av-vignesh" rel="noopener">github.com/av-vignesh</a></strong> — incl. <strong>Orbit</strong>: a single-file Microsoft 365 workspace (MSAL + Graph — calendar, mail, meeting transcripts) with AI summarization, live on GitHub Pages</li>
-          <li><strong>Microsoft AI Innovation Day</strong> — attended; wrote a full field-notes debrief on Fabric IQ/ontology, agent architectures and frontier tuning <span class="todo-link">[add link]</span></li>
-          <li>Field notes in the pipeline: <strong>Logic Apps hosting economics</strong> (Consumption vs Standard break-even) and the <strong>Orbit build story</strong> <span class="todo-link">[add links]</span></li>
-          <li>dev.to / blog — <span class="todo-link">[add handle when live]</span></li>
+          <li><strong>Microsoft AI Innovation Day</strong> — attended; wrote a full field-notes debrief on Fabric IQ/ontology, agent architectures and frontier tuning — <a href="https://dev.to/vicky_acedia/microsoft-cloud-and-ai-innovation-day-bengaluru-what-i-saw-what-i-learned-and-what-im-taking-2bj6" rel="noopener">read it</a></li>
+          <li>Start here: <strong><a href="https://dev.to/vicky_acedia/how-i-decided-to-move-140-consumption-logic-apps-to-a-dedicated-hosting-plan-3m93" rel="noopener">the Logic Apps hosting decision</a></strong> · <a href="https://dev.to/vicky_acedia/i-built-my-own-ai-workspace-for-outlook-and-teams-one-html-file-zero-servers-32c5" rel="noopener">the Orbit build story</a> · <a href="https://dev.to/vicky_acedia/i-built-a-knowledge-graph-for-a-warehouse-with-no-foreign-keys-5fkp" rel="noopener">a knowledge graph for a warehouse with no foreign keys</a></li>
+          <li><strong><a href="https://dev.to/vicky_acedia" rel="noopener">dev.to/vicky_acedia</a></strong> — 26 articles in the first month: Azure integration at scale, agentic AI, design patterns, platform war stories</li>
           <li><strong>Currently deep in:</strong> model fine-tuning (SFT / LoRA) on Azure — working the ladder from baseline evals toward trained adapters</li>
           <li>Off the clock: Namakkal, Tamil Nadu — a garden that gets more attention than it admits, and travel whenever the release calendar allows</li>
         </ul>
@@ -613,6 +617,7 @@
       <a class="btn" href="tel:+919486304676">+91 94863 04676</a>
       <a class="btn" href="https://linkedin.com/in/vignesh-athiappan-a00546139" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://github.com/av-vignesh" rel="noopener">GitHub</a>
+      <a class="btn" href="https://dev.to/vicky_acedia" rel="noopener">dev.to</a>
       <a class="btn" href="Vignesh_Athiappan_Resume.pdf" download>Résumé (PDF)</a>
     </div>
     <div class="contact-meta">
