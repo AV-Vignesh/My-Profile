@@ -3,37 +3,42 @@
 <head>
 <!--
   ============================================================
-  VIGNESH — BEFORE YOU PUBLISH
+  VIGNESH — NOTES ON THIS BUILD
   ============================================================
-  1. Host BOTH files in the same folder:
-       index.html  +  Vignesh_Athiappan_Resume.pdf
-     (File is named index.html so GitHub Pages serves it at the
-      root URL — no more /orbit-workspace.html 404 lessons.)
-  2. Links live: github.com/av-vignesh · dev.to/vicky_acedia
-     (26 posts). Article links are wired into the Systems rows.
-  3. All numbers match resume v6 (50+ workflows, 15+ systems,
-     5,000+ employees, ~25 engineers, 200+ tables, 7.5+ yrs).
-     If v7 changes a number, change it here too.
-  4. Field-note links point at published dev.to articles.
-  5. Suggested domain: vigneshathiappan.dev / .in
+  1. Host index.html + Vignesh_Athiappan_Resume.pdf in the SAME
+     repo folder, or every Resume button 404s.
+  2. fig. 1 is navigation — the NEXUS / NEXI / PLATFORMS nodes
+     scroll to and open their rows in the Systems Index.
+  3. Numbers match resume v7 (7.5+ yrs, 50+ workflows, 15+
+     systems, 5,000+ employees, 200+ tables).
+  4. ONE edit left for you: the [Open to ...] availability line
+     in the hero.
+  5. dev.to links are wired throughout. As you publish new
+     posts, add them to the matching Systems row.
+  6. Mobile: only PWA-style single-file apps exist in our
+     history, so that's what's claimed. If you have a real
+     mobile app project, tell Claude two lines and it gets
+     a proper row.
   ============================================================
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vignesh Athiappan — Engineering Lead · Enterprise Systems Architect · AI & Integration Platforms</title>
-<meta name="description" content="Engineering Lead with 7.5+ years building enterprise platforms, multi-agent AI on Microsoft Teams, a 15-system integration backbone, and a Fabric data lake — serving 5,000+ employees, leading ~25 engineers.">
+<title>Vignesh Athiappan — Senior Technical Lead &amp; Enterprise Systems Architect</title>
+<meta name="description" content="Enterprise systems architect: 17 production systems across five architecture layers — integration, data, AI agents, security, observability. 26 published technical write-ups. COO-signed Impact Player, Q2 2026.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E5F52'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' fill='%23F5F6F4' text-anchor='middle'%3EVA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F5F6F4; --card:#FDFDFC;
-    --ink:#161B19; --ink-soft:#3B4441; --muted:#6C7672;
-    --line:#D8DDD8; --accent:#0E5F52; --accent-ink:#0A4A40;
-    --accent-soft:#E4EFEA; --dot:rgba(22,27,25,.10);
+    --paper:#F5F6F4; --node:#FDFDFC;
+    --ink:#161B19; --ink-2:#3B4441; --muted:#5D6763;
+    --trace:#D8DDD8; --grid-dot:rgba(22,27,25,.10);
+    --signal:#0E5F52; --signal-ink:#0A4A40; --signal-tint:#E4EFEA;
+    --edit:#B06A00; --edit-tint:#FBF2E2;
     --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     --mono:'IBM Plex Mono','SF Mono',Consolas,monospace;
+    --ease:cubic-bezier(0.23,1,0.32,1);
     --maxw:1120px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -42,131 +47,162 @@
     html{scroll-behavior:auto}
     *,*::before,*::after{animation:none!important;transition:none!important}
   }
-  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:15.5px;-webkit-font-smoothing:antialiased}
-  ::selection{background:var(--accent);color:var(--paper)}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.55;font-size:15.5px;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--signal);color:var(--paper)}
+  :focus-visible{outline:2px solid var(--signal);outline-offset:2px;border-radius:4px}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:10px 16px;z-index:100;font-family:var(--mono);font-size:.8rem}
+  .skip:focus{left:12px;top:12px}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
-  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);font-weight:500}
-  a{color:var(--accent-ink)}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--signal-ink);font-weight:500}
+  a{color:var(--signal-ink)}
+  section{scroll-margin-top:70px}
 
   /* ---- top bar ---- */
-  header.top{position:sticky;top:0;z-index:50;background:rgba(245,246,244,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .top-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 26px;max-width:var(--maxw);margin:0 auto}
-  .mark{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink);text-decoration:none;font-weight:500}
-  .mark .chip{width:25px;height:25px;border-radius:6px;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-size:.62rem}
+  header.top{position:sticky;top:0;z-index:50;background:rgba(245,246,244,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--trace)}
+  .top-inner{display:flex;align-items:center;justify-content:space-between;padding:9px 26px;max-width:var(--maxw);margin:0 auto}
+  .markname{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink);text-decoration:none;font-weight:500}
+  .markname .chip{width:26px;height:26px;border-radius:6px;background:var(--signal);color:var(--paper);display:grid;place-items:center;font-size:.62rem}
   nav.anchors{display:flex;gap:20px;align-items:center}
-  nav.anchors a{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none}
-  nav.anchors a:hover{color:var(--accent-ink)}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 16px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--ink);color:var(--ink);background:transparent;transition:background .15s ease,color .15s ease}
+  nav.anchors a{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;padding:6px 2px}
+  nav.anchors a:hover{color:var(--signal-ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;min-height:44px;padding:11px 18px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--ink);color:var(--ink);background:transparent;transition:background .15s var(--ease),color .15s var(--ease),transform .12s var(--ease)}
   .btn:hover{background:var(--ink);color:var(--paper)}
-  .btn.solid{background:var(--accent);border-color:var(--accent);color:var(--paper)}
-  .btn.solid:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
-  .btn.small{padding:7px 13px;font-size:.68rem}
+  .btn:active{transform:scale(.97)}
+  .btn.solid{background:var(--signal);border-color:var(--signal);color:var(--paper)}
+  .btn.solid:hover{background:var(--signal-ink);border-color:var(--signal-ink)}
+  .btn.small{min-height:38px;padding:9px 14px;font-size:.68rem}
 
   /* ---- hero ---- */
-  .hero{position:relative;background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:22px 22px;border-bottom:1px solid var(--line)}
-  .hero-inner{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:48px;align-items:center;padding:52px 26px 46px;max-width:var(--maxw);margin:0 auto}
-  .hero h1{font-size:clamp(2.2rem,4.6vw,3.4rem);line-height:1.05;font-weight:700;letter-spacing:-.028em;margin:12px 0 16px}
-  .hero h1 .accent{color:var(--accent)}
-  .thesis{font-size:1.02rem;color:var(--ink-soft);max-width:36em;margin-bottom:18px}
+  .hero{position:relative;background-image:radial-gradient(var(--grid-dot) 1px,transparent 1px);background-size:22px 22px;border-bottom:1px solid var(--trace)}
+  .hero-inner{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:38px;align-items:center;padding:34px 26px 30px;max-width:var(--maxw);margin:0 auto}
+  .hero .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  .hero .who strong{color:var(--signal-ink);font-weight:500}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.2rem);line-height:1.05;font-weight:700;letter-spacing:-.028em;margin:9px 0 10px}
+  .hero h1 em{font-style:normal;color:var(--signal)}
+  .thesis{font-size:1.02rem;color:var(--ink-2);max-width:37em;margin-bottom:13px}
   .thesis strong{color:var(--ink);font-weight:600}
-  .link-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-  .avail{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+  .proof{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+  .proof a{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.02em;color:var(--ink-2);background:var(--node);border:1px solid var(--trace);border-left:3px solid var(--signal);border-radius:6px;padding:8px 12px;text-decoration:none;transition:border-color .15s var(--ease),color .15s var(--ease)}
+  .proof a:hover{border-color:var(--signal);color:var(--signal-ink)}
+  .cta-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+  .minor-links{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-bottom:7px}
+  .minor-links a{color:var(--ink-2);text-decoration-thickness:1px;text-underline-offset:3px;padding:4px 0}
+  .minor-links a:hover{color:var(--signal-ink)}
+  .avail{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+  .todo{font-family:var(--mono);font-size:.7rem;color:var(--edit);background:var(--edit-tint);border-radius:4px;padding:1px 6px}
 
   .fig svg{width:100%;height:auto;display:block}
-  .fig-caption{display:none}
   @keyframes flow{to{stroke-dashoffset:-16}}
   .conn{fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 5;animation:flow 1.5s linear infinite}
-  .node{fill:var(--card);stroke:var(--ink);stroke-width:1.2}
-  .node.major{stroke:var(--accent);stroke-width:1.5}
-  .port{fill:var(--accent)}
+  .node-r{fill:var(--node);stroke:var(--ink);stroke-width:1.2;transition:stroke-width .15s var(--ease)}
+  .node-r.major{stroke:var(--signal);stroke-width:1.5}
+  .port{fill:var(--signal)}
   .svg-label{font-family:var(--mono);font-size:10.5px;fill:var(--ink);letter-spacing:.04em}
   .svg-label.sub{font-size:9px;fill:var(--muted)}
-  .svg-label.title{font-size:11px;font-weight:500;fill:var(--accent-ink)}
+  .svg-label.title{font-size:11px;font-weight:500;fill:var(--signal-ink)}
+  a.node-a{cursor:pointer}
+  a.node-a:hover .node-r{stroke-width:2.2}
+  a.node-a:hover .svg-label{fill:var(--signal-ink)}
 
   /* ---- facts ---- */
-  .facts{border-bottom:1px solid var(--line);background:var(--card)}
+  .facts{border-bottom:1px solid var(--trace);background:var(--node)}
   .facts-inner{display:grid;grid-template-columns:repeat(6,1fr);max-width:var(--maxw);margin:0 auto}
-  .fact{padding:18px 20px;border-left:1px solid var(--line)}
+  .fact{padding:13px 18px;border-left:1px solid var(--trace)}
   .fact:first-child{border-left:none}
   .fact .num{font-family:var(--mono);font-size:1.45rem;font-weight:500;line-height:1.1}
   .fact .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px}
 
   /* ---- sections ---- */
-  section{padding:52px 0}
-  section + section{border-top:1px solid var(--line)}
-  .sec-head{margin-bottom:26px;display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  section{padding:34px 0}
+  section + section{border-top:1px solid var(--trace)}
+  .sec-head{margin-bottom:17px;display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .sec-head h2{font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:700;letter-spacing:-.02em;margin-top:8px}
   .sec-head .hint{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
 
   /* ---- systems index ---- */
-  .sys{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
-  details.row{border-top:1px solid var(--line)}
-  details.row:first-child{border-top:none}
-  details.row summary{
-    list-style:none;cursor:pointer;
-    display:grid;grid-template-columns:128px 1fr auto 20px;gap:18px;align-items:baseline;
-    padding:13px 20px;transition:background .12s ease;
-  }
+  .sys{border:1px solid var(--trace);border-radius:10px;background:var(--node);overflow:hidden}
+  .sys-group{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:var(--paper);padding:8px 20px;border-top:1px solid var(--trace);scroll-margin-top:70px}
+  .sys-group:first-child{border-top:none}
+  details.row{border-top:1px solid var(--trace);scroll-margin-top:70px}
+  details.row summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:128px 1fr auto 20px;gap:16px;align-items:baseline;padding:10px 20px;min-height:44px;transition:background .12s var(--ease)}
   details.row summary::-webkit-details-marker{display:none}
   details.row summary:hover{background:var(--paper)}
-  details.row[open] summary{background:var(--accent-soft)}
-  .sys-tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);font-weight:500}
+  details.row[open] summary{background:var(--signal-tint)}
+  .sys-tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal-ink);font-weight:500}
   .sys-name{font-weight:600;font-size:.98rem;letter-spacing:-.005em}
-  .sys-name span{font-weight:400;color:var(--ink-soft)}
-  .sys-metric{font-family:var(--mono);font-size:.7rem;color:var(--muted);text-align:right;white-space:nowrap}
+  .sys-name span{font-weight:400;color:var(--ink-2)}
+  .sys-metric{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;white-space:nowrap}
   .sys-toggle{font-family:var(--mono);color:var(--muted);font-size:.9rem;text-align:center}
   details.row[open] .sys-toggle::after{content:"−"}
   details.row:not([open]) .sys-toggle::after{content:"+"}
-  .sys-body{padding:4px 20px 18px 166px;color:var(--ink-soft);font-size:.92rem;max-width:60em}
-  .sys-body p + p{margin-top:8px}
-  .sys-body .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin-right:8px}
+  .sys-body{padding:2px 20px 14px 166px;color:var(--ink-2);font-size:.92rem;max-width:62em}
+  .sys-body p + p{margin-top:6px}
+  .sys-body .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal-ink);margin-right:8px}
   .sys-body .wlink{font-family:var(--mono);font-size:.7rem;margin-top:10px}
 
+  /* ---- writing ---- */
+  .wr{border:1px solid var(--trace);border-radius:10px;background:var(--node);overflow:hidden}
+  .wr-group{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:var(--paper);padding:8px 20px;border-top:1px solid var(--trace)}
+  .wr-group:first-child{border-top:none}
+  .wr-item{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:9px 20px;border-top:1px solid var(--trace);text-decoration:none;color:inherit;transition:background .12s var(--ease)}
+  .wr-item:hover{background:var(--signal-tint)}
+  .wr-t{font-weight:600;font-size:.95rem;letter-spacing:-.005em;color:var(--ink)}
+  .wr-item:hover .wr-t{color:var(--signal-ink)}
+  .wr-d{font-size:.86rem;color:var(--ink-2);margin-top:3px;max-width:56em}
+  .wr-m{font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap}
+  .wr-foot{padding:11px 20px;border-top:1px solid var(--trace);background:var(--paper);font-family:var(--mono);font-size:.76rem;color:var(--ink-2)}
+  @media (max-width:620px){
+    .wr-item{grid-template-columns:1fr}
+    .wr-m{margin-top:6px}
+  }
+
   /* ---- recognition & public ---- */
-  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
-  .panel .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:500;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
+  .panel{background:var(--node);border:1px solid var(--trace);border-radius:10px;padding:18px 20px}
+  .panel .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-ink);font-weight:500;margin-bottom:11px;padding-bottom:8px;border-bottom:1px solid var(--trace)}
   .panel ul{list-style:none}
-  .panel li{position:relative;padding:5px 0 5px 16px;font-size:.92rem;color:var(--ink-soft)}
-  .panel li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+  .panel li{position:relative;padding:3px 0 3px 16px;font-size:.92rem;color:var(--ink-2)}
+  .panel li::before{content:"–";position:absolute;left:0;color:var(--signal)}
   .panel li strong{color:var(--ink);font-weight:600}
-  .panel li .m{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
   .panel li a{text-decoration-thickness:1px;text-underline-offset:2px}
-  .todo-link{font-family:var(--mono);font-size:.7rem;color:#B06A00;background:#FBF2E2;border-radius:4px;padding:1px 6px}
+  .cert{background:var(--signal-tint);border:1px solid var(--trace);border-left:3px solid var(--signal);border-radius:8px;padding:13px 16px;margin-bottom:13px}
+  .cert .cert-k{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-ink);margin-bottom:4px}
+  .cert .cert-t{font-weight:700;font-size:1.1rem;letter-spacing:-.01em;margin-bottom:6px}
+  .cert p{font-size:.9rem;color:var(--ink-2)}
 
   /* ---- skills ---- */
-  .skill-rows{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
-  .skill-row{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:13px 20px;border-top:1px solid var(--line);align-items:start}
+  .skill-rows{border:1px solid var(--trace);border-radius:10px;background:var(--node);overflow:hidden}
+  .skill-row{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:10px 18px;border-top:1px solid var(--trace);align-items:start}
   .skill-row:first-child{border-top:none}
-  .skill-row .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);font-weight:500;padding-top:4px}
+  .skill-row .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal-ink);font-weight:500;padding-top:4px}
   .chips{display:flex;flex-wrap:wrap;gap:6px}
-  .chip{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:3px 9px;white-space:nowrap}
-  .chip.hot{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+  .chip{font-family:var(--mono);font-size:.72rem;color:var(--ink-2);background:var(--paper);border:1px solid var(--trace);border-radius:5px;padding:4px 9px;white-space:nowrap}
+  .chip.hot{border-color:var(--signal);color:var(--signal-ink);background:var(--signal-tint)}
 
   /* ---- track ---- */
-  .track{border-left:2px solid var(--line);margin-left:6px;padding-left:30px}
-  .stint{position:relative;padding-bottom:26px}
+  .track{border-left:2px solid var(--trace);margin-left:6px;padding-left:30px}
+  .stint{position:relative;padding-bottom:18px}
   .stint:last-child{padding-bottom:0}
-  .stint::before{content:"";position:absolute;left:-37px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2.5px solid var(--accent)}
+  .stint::before{content:"";position:absolute;left:-37px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2.5px solid var(--signal)}
   .stint .when{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .stint h3{font-size:1.08rem;font-weight:600;margin:4px 0 2px}
-  .stint .role{font-family:var(--mono);font-size:.76rem;color:var(--accent-ink);margin-bottom:8px}
-  .stint p{color:var(--ink-soft);max-width:48em;font-size:.92rem}
+  .stint .role{font-family:var(--mono);font-size:.76rem;color:var(--signal-ink);margin-bottom:8px}
+  .stint p{color:var(--ink-2);max-width:48em;font-size:.92rem}
 
   /* ---- contact ---- */
-  .contact{background:var(--ink);color:var(--paper);padding:48px 0}
+  .contact{background:var(--ink);color:var(--paper);padding:34px 0}
   .contact .eyebrow{color:#8FC6B8}
   .contact h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;letter-spacing:-.02em;margin:10px 0 12px;line-height:1.15}
-  .contact p{color:#B9C2BE;max-width:38em;margin-bottom:24px;font-size:.95rem}
-  .contact .link-row .btn{border-color:#4A5652;color:var(--paper)}
-  .contact .link-row .btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-  .contact .link-row .btn.solid{background:var(--accent);border-color:var(--accent)}
-  .contact .link-row .btn.solid:hover{background:#12735F;border-color:#12735F;color:var(--paper)}
-  .contact-meta{margin-top:28px;padding-top:18px;border-top:1px solid #2A322F;display:flex;flex-wrap:wrap;gap:10px 36px;font-family:var(--mono);font-size:.72rem;color:#8B9591}
+  .contact p{color:#B9C2BE;max-width:38em;margin-bottom:18px;font-size:.95rem}
+  .contact .cta-row .btn{border-color:#4A5652;color:var(--paper)}
+  .contact .cta-row .btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .contact .cta-row .btn.solid{background:var(--signal);border-color:var(--signal)}
+  .contact .cta-row .btn.solid:hover{background:#12735F;border-color:#12735F;color:var(--paper)}
+  .contact-meta{margin-top:20px;padding-top:14px;border-top:1px solid #2A322F;display:flex;flex-wrap:wrap;gap:10px 36px;font-family:var(--mono);font-size:.72rem;color:#8B9591}
   footer.colophon{background:var(--ink);color:#6C7672;font-family:var(--mono);font-size:.68rem;padding:14px 0 26px}
   footer.colophon .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
-  .reveal{opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
+  .reveal{opacity:0;transform:translateY(8px);transition:opacity .3s var(--ease),transform .3s var(--ease)}
   .reveal.in{opacity:1;transform:none}
 
   /* ---- responsive ---- */
@@ -175,7 +211,7 @@
     .fig{max-width:540px}
     .facts-inner{grid-template-columns:repeat(3,1fr)}
     .fact:nth-child(4){border-left:none}
-    .fact:nth-child(n+4){border-top:1px solid var(--line)}
+    .fact:nth-child(n+4){border-top:1px solid var(--trace)}
     .two-col{grid-template-columns:1fr}
     nav.anchors a:not(.btn){display:none}
     details.row summary{grid-template-columns:100px 1fr 20px;row-gap:2px}
@@ -186,9 +222,9 @@
   @media (max-width:620px){
     .facts-inner{grid-template-columns:repeat(2,1fr)}
     .fact:nth-child(3){border-left:none}
-    .fact:nth-child(n+3){border-top:1px solid var(--line)}
+    .fact:nth-child(n+3){border-top:1px solid var(--trace)}
     .skill-row{grid-template-columns:1fr;gap:8px}
-    section{padding:40px 0}
+    section{padding:28px 0}
     details.row summary{grid-template-columns:1fr 20px}
     .sys-tag{grid-column:1}
     .sys-metric{grid-column:1}
@@ -205,12 +241,14 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#systems">Skip to content</a>
 
 <header class="top">
   <div class="top-inner">
-    <a class="mark" href="#"><span class="chip">VA</span>VIGNESH&nbsp;ATHIAPPAN</a>
-    <nav class="anchors">
+    <a class="markname" href="#"><span class="chip">VA</span>VIGNESH&nbsp;ATHIAPPAN</a>
+    <nav class="anchors" aria-label="Sections">
       <a href="#systems">Systems</a>
+      <a href="#writing">Writing</a>
       <a href="#recognition">Recognition</a>
       <a href="#skills">Skills</a>
       <a href="#track">Track</a>
@@ -223,27 +261,34 @@
 <div class="hero">
   <div class="hero-inner">
     <div>
-      <div class="eyebrow">Engineering Lead · Enterprise Systems Architect · AI &amp; Integration Platforms</div>
-      <h1>Vignesh <span class="accent">Athiappan</span></h1>
+      <p class="who"><strong>Vignesh Athiappan</strong> — Enterprise Systems Architect · Senior Technical Lead</p>
+      <h1><em>Seventeen</em> production systems.<br>Five architecture layers.</h1>
       <p class="thesis">
-        7.5+ years building the systems <strong>5,000+ employees</strong> run on:
-        a <strong>multi-agent AI assistant on Microsoft Teams</strong>, a real-time
-        integration backbone across <strong>15+ systems</strong>, and an enterprise
-        <strong>data lake on Fabric</strong> — leading ~25 engineers, shipping
-        production systems in 3–60&nbsp;day timelines.
+        Integration backbone, data platform, agent ecosystem, security architecture,
+        observability — I've <strong>designed and shipped all five layers</strong> of an
+        enterprise estate. Sole or lead architect on most of it. Then I
+        <strong>wrote up how, in public</strong>.
       </p>
-      <div class="link-row">
-        <a class="btn solid" href="mailto:aakashvicky23@gmail.com">Email</a>
-        <a class="btn" href="https://linkedin.com/in/vignesh-athiappan-a00546139" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/av-vignesh" rel="noopener">GitHub</a>
-        <a class="btn" href="https://dev.to/vicky_acedia" rel="noopener">dev.to</a>
-        <a class="btn" href="Vignesh_Athiappan_Resume.pdf" download>Résumé (PDF)</a>
+      <div class="proof">
+        <a href="#recognition">Impact Player, Q2 2026 — signed by the President &amp; COO</a>
+        <a href="#writing">26 technical write-ups, published</a>
+        <a href="#systems">Architecture demoed to the CEO &amp; COO</a>
       </div>
-      <p class="avail">Namakkal, Tamil Nadu, India &nbsp;·&nbsp; +91 94863 04676 &nbsp;·&nbsp; [Open to — set your availability line]</p>
+      <div class="cta-row">
+        <a class="btn solid" href="mailto:aakashvicky23@gmail.com">Email me</a>
+        <a class="btn" href="#systems">Inspect the architecture ↓</a>
+      </div>
+      <p class="minor-links">
+        <a href="https://linkedin.com/in/vignesh-athiappan-a00546139" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/av-vignesh" rel="noopener">GitHub</a> ·
+        <a href="https://dev.to/vicky_acedia" rel="noopener">dev.to</a> ·
+        <a href="Vignesh_Athiappan_Resume.pdf" download>Résumé (PDF)</a>
+      </p>
+      <p class="avail">Namakkal, Tamil Nadu, India · +91 94863 04676 · <span class="todo">[Open to — set your availability line]</span></p>
     </div>
 
-    <div class="fig" aria-hidden="true">
-      <svg viewBox="0 0 560 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of the systems Vignesh builds and runs">
+    <div class="fig">
+      <svg viewBox="0 0 560 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive schematic: fifteen source systems flow through the Nexus backbone into internal platforms and the Nexi AI assistant, reaching 5,000+ employees. Nodes link to their entries below.">
         <path class="conn" d="M132,41  C178,41  176,210 214,208"/>
         <path class="conn" d="M132,105 C178,105 176,210 214,209"/>
         <path class="conn" d="M132,169 C178,169 176,210 214,210"/>
@@ -256,34 +301,40 @@
         <path class="conn" d="M478,315 C486,352 336,354 306,378"/>
 
         <g>
-          <rect class="node" x="22" y="24"  width="110" height="34" rx="5"/>
+          <rect class="node-r" x="22" y="24"  width="110" height="34" rx="5"/>
           <text class="svg-label" x="77" y="45" text-anchor="middle">ATS</text>
-          <rect class="node" x="22" y="88"  width="110" height="34" rx="5"/>
+          <rect class="node-r" x="22" y="88"  width="110" height="34" rx="5"/>
           <text class="svg-label" x="77" y="109" text-anchor="middle">ERP</text>
-          <rect class="node" x="22" y="152" width="110" height="34" rx="5"/>
+          <rect class="node-r" x="22" y="152" width="110" height="34" rx="5"/>
           <text class="svg-label" x="77" y="173" text-anchor="middle">HRIS</text>
-          <rect class="node" x="22" y="216" width="110" height="34" rx="5"/>
+          <rect class="node-r" x="22" y="216" width="110" height="34" rx="5"/>
           <text class="svg-label" x="77" y="237" text-anchor="middle">CRM</text>
-          <rect class="node" x="22" y="280" width="110" height="34" rx="5"/>
+          <rect class="node-r" x="22" y="280" width="110" height="34" rx="5"/>
           <text class="svg-label" x="77" y="301" text-anchor="middle">ADO / DEVOPS</text>
-          <rect class="node" x="22" y="344" width="110" height="34" rx="5"/>
+          <rect class="node-r" x="22" y="344" width="110" height="34" rx="5"/>
           <text class="svg-label" x="77" y="365" text-anchor="middle">+10 MORE</text>
         </g>
 
-        <rect class="node major" x="216" y="176" width="170" height="68" rx="6"/>
-        <text class="svg-label title" x="301" y="200" text-anchor="middle">NEXUS — BACKBONE</text>
-        <text class="svg-label sub"   x="301" y="216" text-anchor="middle">15+ systems · 50+ workflows</text>
-        <text class="svg-label sub"   x="301" y="230" text-anchor="middle">APIM · Logic Apps · Service Bus</text>
+        <a class="node-a" href="#sys-nexus"><title>Open Nexus in the Systems Index</title>
+          <rect class="node-r major" x="216" y="176" width="170" height="68" rx="6"/>
+          <text class="svg-label title" x="301" y="200" text-anchor="middle">NEXUS — BACKBONE</text>
+          <text class="svg-label sub"   x="301" y="216" text-anchor="middle">15+ systems · 50+ workflows</text>
+          <text class="svg-label sub"   x="301" y="230" text-anchor="middle">APIM · Logic Apps · Service Bus</text>
+        </a>
 
-        <rect class="node" x="418" y="120" width="122" height="55" rx="6"/>
-        <text class="svg-label" x="479" y="140" text-anchor="middle">PLATFORMS</text>
-        <text class="svg-label sub" x="479" y="156" text-anchor="middle">PMS · Skills · Reports</text>
+        <a class="node-a" href="#g-platforms"><title>Open the platforms group</title>
+          <rect class="node-r" x="418" y="120" width="122" height="55" rx="6"/>
+          <text class="svg-label" x="479" y="140" text-anchor="middle">PLATFORMS</text>
+          <text class="svg-label sub" x="479" y="156" text-anchor="middle">PMS · Skills · Reports</text>
+        </a>
 
-        <rect class="node major" x="418" y="260" width="122" height="55" rx="6"/>
-        <text class="svg-label title" x="479" y="280" text-anchor="middle">NEXI — AI</text>
-        <text class="svg-label sub" x="479" y="296" text-anchor="middle">multi-agent · on Teams</text>
+        <a class="node-a" href="#sys-nexi"><title>Open Nexi in the Systems Index</title>
+          <rect class="node-r major" x="418" y="260" width="122" height="55" rx="6"/>
+          <text class="svg-label title" x="479" y="280" text-anchor="middle">NEXI — AI</text>
+          <text class="svg-label sub" x="479" y="296" text-anchor="middle">multi-agent · on Teams</text>
+        </a>
 
-        <rect class="node" x="200" y="378" width="182" height="42" rx="6"/>
+        <rect class="node-r" x="200" y="378" width="182" height="42" rx="6"/>
         <text class="svg-label" x="291" y="403" text-anchor="middle">5,000+ EMPLOYEES, DAILY</text>
 
         <circle class="port" cx="216" cy="210" r="2.6"/>
@@ -292,8 +343,8 @@
         <circle class="port" cx="326" cy="378" r="2.6"/>
         <circle class="port" cx="306" cy="378" r="2.6"/>
 
-        <text class="svg-label sub" x="22" y="452">fig. 1 — the estate, simplified.</text>
-        <text class="svg-label sub" x="22" y="466">designed, built and run by a ~25-engineer team — led by me.</text>
+        <text class="svg-label sub" x="22" y="452">fig. 1 — the estate, simplified. Every node is a link: tap to inspect.</text>
+        <text class="svg-label sub" x="22" y="466">Serving 5,000+ employees. Built and run by a ~25-engineer team — led by me.</text>
       </svg>
     </div>
   </div>
@@ -302,12 +353,12 @@
 <!-- ================= FACTS ================= -->
 <div class="facts">
   <div class="facts-inner">
-    <div class="fact"><div class="num">5,000+</div><div class="lbl">Employees served</div></div>
-    <div class="fact"><div class="num">15+</div><div class="lbl">Systems, one backbone</div></div>
-    <div class="fact"><div class="num">50+</div><div class="lbl">Production workflows</div></div>
+    <div class="fact"><div class="num">17</div><div class="lbl">Systems architected</div></div>
+    <div class="fact"><div class="num">5</div><div class="lbl">Architecture layers owned</div></div>
+    <div class="fact"><div class="num">26</div><div class="lbl">Write-ups published</div></div>
+    <div class="fact"><div class="num">15+</div><div class="lbl">Systems integrated</div></div>
+    <div class="fact"><div class="num">200+</div><div class="lbl">Tables modeled</div></div>
     <div class="fact"><div class="num">~25</div><div class="lbl">Engineers led</div></div>
-    <div class="fact"><div class="num">200+</div><div class="lbl">Data-lake tables</div></div>
-    <div class="fact"><div class="num">3–60d</div><div class="lbl">Ship timelines</div></div>
   </div>
 </div>
 
@@ -317,14 +368,16 @@
     <div class="sec-head reveal">
       <div>
         <div class="eyebrow">Systems index</div>
-        <h2>Everything I've architected, in one screen</h2>
+        <h2>Seventeen systems, five layers, indexed</h2>
       </div>
-      <span class="hint">// tap any row for role &amp; impact</span>
+      <span class="hint">Tap any row for role, impact and the public write-up</span>
     </div>
 
     <div class="sys reveal">
 
-      <details class="row" open>
+      <div class="sys-group" id="g-ai">AI &amp; agent systems</div>
+
+      <details class="row" id="sys-nexi" open>
         <summary>
           <span class="sys-tag">AI · Agents</span>
           <span class="sys-name">Nexi <span>— multi-agent AI assistant on Microsoft Teams</span></span>
@@ -332,79 +385,29 @@
           <span class="sys-toggle"></span>
         </summary>
         <div class="sys-body">
-          <p><span class="k">Role</span>Architect &amp; lead. Teams bot in C# / .NET 8 / Bot Framework SDK on Azure App Service; central Logic App router dispatching to 4 production specialist agents (Resource Info, Leave, ADO Sync, Knowledge Base) integrating Pulse, NetSuite, CRM and more. End-to-end observability in Application Insights; 14+ prompt iterations.</p>
-          <p><span class="k">Under the hood</span>The Knowledge Base agent is production RAG on Azure AI Search — 15+ country- and domain-specific policy indexes fronted by a query classification + rewriting layer that resolves follow-up questions into self-contained searches. Multilingual via Azure AI Translator.</p>
-          <p><span class="k">Next generation</span>Architected 3 next-gen agent systems — L&amp;D Agent, PRM Agent (10 sub-agents), Opportunity Agent (7 sub-agents) — and established reusable patterns: promise-ledger, action registry, domain-driven sub-agent decomposition.</p>
-          <p class="wlink"><a href="https://dev.to/vicky_acedia/building-and-deploying-a-microsoft-teams-bot-on-azure-end-to-end-462f" rel="noopener">Public write-up: building &amp; deploying a Teams bot on Azure, end to end →</a></p>
+          <p><span class="k">Role</span>Architect &amp; lead, end to end — from agent design to Teams Admin Center deployment. Teams bot in C# / .NET 8 / Bot Framework SDK on Azure App Service; central Logic App router dispatching to 4 production specialist agents (Resource Info, Leave, ADO Sync, Knowledge Base) integrating Pulse, NetSuite, CRM and more. 14+ prompt iterations to production quality.</p>
+          <p><span class="k">Under the hood</span>The Knowledge Base agent is production RAG on Azure AI Search — 15+ country- and domain-specific policy indexes fronted by a query classification + rewriting layer that resolves follow-ups into self-contained searches. Multilingual via Azure AI Translator.</p>
+          <p><span class="k">Agent security</span>Least-privilege tool access per agent and an auditable action registry — every capability an agent has is explicit, scoped, and logged.</p>
+          <p><span class="k">Next generation</span>Architected 3 next-gen agent systems — L&amp;D Agent, PRM Agent (10 sub-agents), Opportunity Agent (7 sub-agents) — with reusable patterns: promise-ledger, action registry, domain-driven sub-agent decomposition.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/from-a-15-second-chatbot-to-a-real-agentic-assistant-440j" rel="noopener">Write-ups: from a 15-second chatbot to a real agentic assistant →</a> · <a href="https://dev.to/vicky_acedia/building-and-deploying-a-microsoft-teams-bot-on-azure-end-to-end-462f" rel="noopener">a Teams bot on Azure, end to end →</a></p>
         </div>
       </details>
 
-      <details class="row">
+      <details class="row" id="sys-grounding">
         <summary>
-          <span class="sys-tag">Integration</span>
-          <span class="sys-name">Nexus <span>— enterprise digital backbone across 15+ systems</span></span>
-          <span class="sys-metric">50+ workflows · 200+ job reqs/mo</span>
+          <span class="sys-tag">Grounding</span>
+          <span class="sys-name">Knowledge graph &amp; ontology <span>— schema-as-graph for grounded AI</span></span>
+          <span class="sys-metric">the Fabric IQ / Foundry IQ direction</span>
           <span class="sys-toggle"></span>
         </summary>
         <div class="sys-body">
-          <p><span class="k">Role</span>Sole architect. Real-time integration layer connecting 15+ internal and SaaS systems across HR, Sales, Finance and Resource Management — 50+ Logic App workflows behind API Management, including Greenhouse ATS at 200+ job requisitions/month. Eliminated operational silos organization-wide.</p>
-          <p><span class="k">The hard 20%</span>OAuth token-invalidation race conditions, WAF false positives on legitimate traffic, schema-validation overflows, private ILB triggers with APIM as the sole front door, fixed egress via NAT gateway for partner whitelisting.</p>
+          <p><span class="k">What</span>A knowledge graph built entirely from the code layer — table relationships, per-column definitions, join paths — for a warehouse with no foreign keys. It powers natural-language query answering and automated report generation: the ontology layer between the warehouse and the agents, so schema context stops being hand-fed into every prompt. Demoed to leadership.</p>
+          <p><span class="k">Why it matters</span>Microsoft's Fabric IQ and Foundry IQ announcements map almost one-to-one onto this design — grounding agents in a semantic layer instead of raw schema. I evaluated both at Microsoft's AI Innovation Day and folded them into our grounding roadmap.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/i-built-a-knowledge-graph-for-a-warehouse-with-no-foreign-keys-5fkp" rel="noopener">Write-up: a knowledge graph for a warehouse with no foreign keys →</a></p>
         </div>
       </details>
 
-      <details class="row">
-        <summary>
-          <span class="sys-tag">Data platform</span>
-          <span class="sys-name">Fabric Data Lake + AI Data Agent <span>— Bronze→Silver→Gold</span></span>
-          <span class="sys-metric">200+ tables · demoed to CEO</span>
-          <span class="sys-toggle"></span>
-        </summary>
-        <div class="sys-body">
-          <p><span class="k">Role</span>Architect &amp; team lead (4 data engineers + 3 Power BI analysts); migrated 2 source systems personally. Medallion architecture, 10+ curated Gold datasets.</p>
-          <p><span class="k">The interesting part</span>A dynamic GraphQL API as an MCP layer — the AI model reads the schema, constructs its own queries, and answers conversationally. Democratized data access for Operations, FP&amp;A, HR, Sales and the C-suite; HR Data Agent demoed to the CEO.</p>
-        </div>
-      </details>
-
-      <details class="row">
-        <summary>
-          <span class="sys-tag">Knowledge graph</span>
-          <span class="sys-name">CRM Knowledge Graph <span>— schema-as-graph for grounded AI</span></span>
-          <span class="sys-metric">demoed to leadership</span>
-          <span class="sys-toggle"></span>
-        </summary>
-        <div class="sys-body">
-          <p><span class="k">What</span>A knowledge graph built entirely from the code layer — table relationships, per-column definitions, and join paths — designed to power natural-language query answering and automated report generation. The ontology layer between the warehouse and the agents, so schema context stops being hand-fed into every prompt.</p>
-          <p class="wlink"><a href="https://dev.to/vicky_acedia/i-built-a-knowledge-graph-for-a-warehouse-with-no-foreign-keys-5fkp" rel="noopener">Public write-up: a knowledge graph for a warehouse with no foreign keys →</a></p>
-        </div>
-      </details>
-
-      <details class="row">
-        <summary>
-          <span class="sys-tag">Security</span>
-          <span class="sys-name">Azure landing zone &amp; security architecture</span>
-          <span class="sys-metric">APIM as the single front door</span>
-          <span class="sys-toggle"></span>
-        </summary>
-        <div class="sys-body">
-          <p><span class="k">Scope</span>Driving the security architecture across the estate: least-privilege integration identities (after auditing an over-broad access grant), bulk secret centralization into Key Vault with managed identities, private ILB workflow triggers with API Management as the only public surface, Front Door / WAF rule tuning, and secret-rotation discipline.</p>
-          <p><span class="k">Now</span>Building a per-application security assessment framework — methodology and dimensions first, piloted application-by-application before any tooling.</p>
-          <p class="wlink"><a href="https://dev.to/vicky_acedia/security-isnt-a-checklist-its-a-quarterly-habit-how-we-protect-our-enterprise-applications-49f5" rel="noopener">Public write-up: security isn't a checklist — it's a quarterly habit →</a></p>
-        </div>
-      </details>
-
-      <details class="row">
-        <summary>
-          <span class="sys-tag">Reporting</span>
-          <span class="sys-name">Lake Reports <span>— reporting hub on Fabric Gold</span></span>
-          <span class="sys-metric">20+ reports · 6 categories</span>
-          <span class="sys-toggle"></span>
-        </summary>
-        <div class="sys-body">
-          <p><span class="k">Role</span>Architected the full greenfield solution (Angular + .NET + Fabric Gold) and directed the team: catalog UI, dynamic filters, favorites, multi-format export (Excel, CSV, PDF, JSON). Single reporting hub replacing fragmented reporting for FP&amp;A, HR, Operations, Sales and executive leadership.</p>
-        </div>
-      </details>
-
-      <details class="row">
+      <details class="row" id="sys-sales">
         <summary>
           <span class="sys-tag">AI · Revenue</span>
           <span class="sys-name">Sales Summary <span>— AI-driven revenue intelligence</span></span>
@@ -416,7 +419,23 @@
         </div>
       </details>
 
-      <details class="row">
+      <div class="sys-group" id="g-platforms">Integration &amp; platforms</div>
+
+      <details class="row" id="sys-nexus">
+        <summary>
+          <span class="sys-tag">Integration</span>
+          <span class="sys-name">Nexus <span>— enterprise digital backbone across 15+ systems</span></span>
+          <span class="sys-metric">50+ workflows · 200+ job reqs/mo</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">Role</span>Sole architect. Real-time integration layer connecting 15+ internal and SaaS systems across HR, Sales, Finance and Resource Management — 50+ Logic App workflows behind API Management, including Greenhouse ATS at 200+ job requisitions/month. Eliminated operational silos organization-wide.</p>
+          <p><span class="k">Functional flows first</span>Every integration starts as a written functional flow — triggers, states, failure paths, compliance checks — before a single action is built. That's why they survive production.</p>
+          <p><span class="k">The hard 20%</span>OAuth token-invalidation race conditions, WAF false positives on legitimate traffic, schema-validation overflows, private ILB triggers with APIM as the sole front door, fixed egress via NAT gateway for partner whitelisting.</p>
+        </div>
+      </details>
+
+      <details class="row" id="sys-pms">
         <summary>
           <span class="sys-tag">HR platform</span>
           <span class="sys-name">Performance Management System <span>— configurable workflow engine</span></span>
@@ -428,7 +447,7 @@
         </div>
       </details>
 
-      <details class="row">
+      <details class="row" id="sys-skillsint">
         <summary>
           <span class="sys-tag">HR platform</span>
           <span class="sys-name">Skills Intelligence Platform <span>— competency framework &amp; reporting</span></span>
@@ -440,7 +459,7 @@
         </div>
       </details>
 
-      <details class="row">
+      <details class="row" id="sys-opm">
         <summary>
           <span class="sys-tag">Operations</span>
           <span class="sys-name">OPM <span>— resource allocation &amp; compliance</span></span>
@@ -448,35 +467,253 @@
           <span class="sys-toggle"></span>
         </summary>
         <div class="sys-body">
-          <p><span class="k">Role</span>Designed allocation workflows with 38 test scenarios and 7 compliance checks. Led the EU rollout in Serbia — 2 months, 2,000+ employees, 20+ project managers — unifying global operations under one framework.</p>
+          <p><span class="k">Role</span>Defined the functional flows and designed allocation workflows with 38 test scenarios and 7 compliance checks. Led the EU rollout in Serbia — 2 months, 2,000+ employees, 20+ project managers — unifying global operations under one framework.</p>
         </div>
       </details>
 
-      <details class="row">
+      <details class="row" id="sys-approvals">
         <summary>
           <span class="sys-tag">Governance</span>
-          <span class="sys-name">Approval Hub + SSRS migration <span>— Azure readiness</span></span>
-          <span class="sys-metric">~90 reports replaced</span>
+          <span class="sys-name">Centralized Approval Hub <span>+ SSRS migration for Azure readiness</span></span>
+          <span class="sys-metric">one auditable surface · ~90 reports replaced</span>
           <span class="sys-toggle"></span>
         </summary>
         <div class="sys-body">
-          <p><span class="k">Role</span>Consolidated approval workflows into a single auditable platform, and replaced ~90 on-prem SSRS reports with SheetJS Excel builders — removing the critical blocker for the Azure cloud migration.</p>
+          <p><span class="k">The approach</span>Approvals were scattered across systems and inboxes; I consolidated them into a single auditable platform — one place to act, one trail to audit. In the same push, replaced ~90 on-prem SSRS reports with SheetJS Excel builders, removing the critical blocker for the Azure cloud migration.</p>
         </div>
       </details>
 
-      <details class="row">
+      <div class="sys-group" id="g-data">Data &amp; reporting</div>
+
+      <details class="row" id="sys-lake">
+        <summary>
+          <span class="sys-tag">Data platform</span>
+          <span class="sys-name">Fabric Data Lake + AI Data Agent <span>— Bronze→Silver→Gold</span></span>
+          <span class="sys-metric">200+ tables · demoed to CEO</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">Role</span>Architect &amp; team lead (4 data engineers + 3 Power BI analysts); migrated 2 source systems personally. Medallion architecture, 10+ curated Gold datasets.</p>
+          <p><span class="k">The interesting part</span>A dynamic GraphQL API as an MCP layer — the AI model reads the schema, constructs its own queries, and answers conversationally. Democratized data access for Operations, FP&amp;A, HR, Sales and the C-suite; HR Data Agent demoed to the CEO.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/turning-a-system-of-record-into-an-ai-agent-building-mcp-tools-on-azure-291f" rel="noopener">Write-up: turning a system of record into an AI agent with MCP tools →</a></p>
+        </div>
+      </details>
+
+      <details class="row" id="sys-reports">
+        <summary>
+          <span class="sys-tag">Reporting</span>
+          <span class="sys-name">Lake Reports <span>— the report studio on Fabric Gold</span></span>
+          <span class="sys-metric">20+ reports · 6 categories · one hub</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">The approach</span>Instead of teams commissioning one-off reports, a central studio: a governed catalog UI with dynamic filters, favorites, and multi-format export (Excel, CSV, PDF, JSON), all reading from Fabric Gold. Architected the full greenfield solution (Angular + .NET) and directed the team. FP&amp;A, HR, Operations, Sales and executive leadership consume from one place.</p>
+        </div>
+      </details>
+
+      <div class="sys-group" id="g-security">Security, observability &amp; reliability</div>
+
+      <details class="row" id="sys-security">
+        <summary>
+          <span class="sys-tag">Security</span>
+          <span class="sys-name">Security architecture <span>— designed, and measured quarterly</span></span>
+          <span class="sys-metric">APIM as the single front door</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">Design</span>Least-privilege integration identities (after auditing an over-broad access grant), bulk secret centralization into Key Vault with managed identities, private ILB workflow triggers with API Management as the only public surface, Front Door / WAF rule tuning, and secret-rotation discipline.</p>
+          <p><span class="k">Measurement</span>Security as a recurring habit, not a launch checklist: a per-application assessment framework — dimensions defined first, scored application by application, revisited quarterly.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/security-isnt-a-checklist-its-a-quarterly-habit-how-we-protect-our-enterprise-applications-49f5" rel="noopener">Write-ups: security is a quarterly habit →</a> · <a href="https://dev.to/vicky_acedia/a-secure-framework-for-exposing-saas-data-to-your-data-lake-2klc" rel="noopener">a secure framework for exposing SaaS data →</a></p>
+        </div>
+      </details>
+
+      <details class="row" id="sys-observability">
+        <summary>
+          <span class="sys-tag">Observability</span>
+          <span class="sys-name">Observability by design <span>— bot → router → agents → integrations</span></span>
+          <span class="sys-metric">traceable end to end</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">Design</span>Application Insights spanning the full chain with correlated operations and custom dimensions, so one query follows a request from the Teams bot through the router into every agent and integration it touched. KQL dashboards leadership actually reads.</p>
+          <p><span class="k">Origin story</span>Nexi exists partly because of this: silent integration failures, surfaced in plain English, org-wide.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/app-insights-by-example-a-paste-and-run-playbook-for-your-stack-4cg2" rel="noopener">Write-up: App Insights by example — a paste-and-run playbook →</a></p>
+        </div>
+      </details>
+
+      <details class="row" id="sys-performance">
         <summary>
           <span class="sys-tag">Reliability</span>
           <span class="sys-name">Performance engineering <span>— load testing &amp; capacity planning</span></span>
-          <span class="sys-metric">P95 &lt; 1s under load</span>
+          <span class="sys-metric">P95 under 1s under load</span>
           <span class="sys-toggle"></span>
         </summary>
         <div class="sys-body">
           <p><span class="k">Role</span>JMeter load testing across core platform screens and integration paths (P95 backend 0.72s), read/write contention analysis, and the capacity plan — tier upgrade, load balancing, autoscaling — with monthly cost forecasting to leadership.</p>
-          <p class="wlink"><a href="https://dev.to/vicky_acedia/load-testing-a-production-app-on-azure-how-i-ran-it-measured-it-and-what-it-taught-me-28nc" rel="noopener">Public write-up: load-testing a production app on Azure →</a></p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/load-testing-a-production-app-on-azure-how-i-ran-it-measured-it-and-what-it-taught-me-28nc" rel="noopener">Write-up: load-testing a production app on Azure →</a></p>
         </div>
       </details>
 
+      <div class="sys-group" id="g-devex">Engineering practice &amp; developer experience</div>
+
+      <details class="row" id="sys-prreview">
+        <summary>
+          <span class="sys-tag">DevEx · AI</span>
+          <span class="sys-name">AI PR review desk <span>— Gatekeeper, for Azure DevOps</span></span>
+          <span class="sys-metric">benchmarked vs CodeRabbit</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">What</span>Built an LLM-powered pull-request review desk wired into Azure DevOps — structured findings on every PR before a human reviewer opens it. Then benchmarked it against CodeRabbit and other commercial reviewers before committing the team to it.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/gatekeeper-building-an-ai-powered-pull-request-review-desk-for-azure-devops-1fnd" rel="noopener">Write-ups: building Gatekeeper →</a> · <a href="https://dev.to/vicky_acedia/we-built-our-own-ai-pr-reviewer-for-azure-devops-then-benchmarked-it-against-coderabbit-and-5dne" rel="noopener">benchmarking it against CodeRabbit →</a></p>
+        </div>
+      </details>
+
+      <details class="row" id="sys-pipelines">
+        <summary>
+          <span class="sys-tag">DevEx</span>
+          <span class="sys-name">Deployment automation <span>— pipelines that scale with the estate</span></span>
+          <span class="sys-metric">15+ manual deploys → 2 templates</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">What</span>Collapsed 15+ manual IIS deployments into 2 parameterised YAML templates; one pipeline deploying SQL across sixteen databases; the Logic Apps estate auto-backed-up into Azure DevOps. Release day stopped being an event.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/from-15-manual-deployments-to-2-yaml-templates-scaling-azure-devops-pipelines-for-iis-hosted-apps-3884" rel="noopener">Write-ups: 15+ deployments to 2 YAML templates →</a> · <a href="https://dev.to/vicky_acedia/one-pipeline-sixteen-databases-parameterised-sql-deployments-in-azure-devops-38nd" rel="noopener">one pipeline, sixteen databases →</a></p>
+        </div>
+      </details>
+
+      <details class="row" id="sys-triage">
+        <summary>
+          <span class="sys-tag">DevEx · AI</span>
+          <span class="sys-name">Zero-backend AI triage dashboard <span>— support queue, one HTML file</span></span>
+          <span class="sys-metric">no servers to own</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">What</span>A single-file dashboard that reads Azure DevOps directly and uses an LLM to triage the support queue — classification, summaries, suggested owners — with zero infrastructure to deploy or maintain.</p>
+          <p class="wlink"><a href="https://dev.to/vicky_acedia/the-zero-backend-ai-triage-dashboard-one-html-file-azure-devops-and-an-llm-2gng" rel="noopener">Write-up: the zero-backend AI triage dashboard →</a></p>
+        </div>
+      </details>
+
+      <details class="row" id="sys-testing">
+        <summary>
+          <span class="sys-tag">Quality</span>
+          <span class="sys-name">Automation testing practice <span>— a capability built from zero</span></span>
+          <span class="sys-metric">now a standing team</span>
+          <span class="sys-toggle"></span>
+        </summary>
+        <div class="sys-body">
+          <p><span class="k">What</span>Stood up automation testing as a new organizational capability — engineers selected and trained, framework choices made, regression coverage now driving releases across the platform estate instead of manual passes.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WRITING ================= -->
+<section id="writing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">Writing</div>
+        <h2>26 write-ups — the reasoning behind the systems</h2>
+      </div>
+      <span class="hint">Published on dev.to · every architecture decision, shown working</span>
+    </div>
+    <div class="wr reveal">
+
+      <div class="wr-group">Architecture decisions — how the call actually got made</div>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/i-built-a-knowledge-graph-for-a-warehouse-with-no-foreign-keys-5fkp" rel="noopener">
+        <span><span class="wr-t">I Built a Knowledge Graph for a Warehouse With No Foreign Keys</span>
+        <span class="wr-d">Deriving an ontology from the code layer when the schema won't tell you anything.</span></span>
+        <span class="wr-m">9 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/azure-sql-managed-instance-vs-azure-sql-database-how-i-actually-made-the-call-3b60" rel="noopener">
+        <span><span class="wr-t">Azure SQL Managed Instance vs Azure SQL Database: How I Actually Made the Call</span>
+        <span class="wr-d">The decision matrix, the constraints that mattered, and what I'd weigh differently now.</span></span>
+        <span class="wr-m">10 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/how-i-decided-to-move-140-consumption-logic-apps-to-a-dedicated-hosting-plan-3m93" rel="noopener">
+        <span><span class="wr-t">How I Decided to Move 140+ Consumption Logic Apps to a Dedicated Hosting Plan</span>
+        <span class="wr-d">Break-even modeling on a large workflow estate — action volumes, cost curves, the threshold.</span></span>
+        <span class="wr-m">6 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/a-secure-framework-for-exposing-saas-data-to-your-data-lake-2klc" rel="noopener">
+        <span><span class="wr-t">A Secure Framework for Exposing SaaS Data to Your Data Lake</span>
+        <span class="wr-d">Getting vendor data into a warehouse without opening a hole in the estate.</span></span>
+        <span class="wr-m">6 min</span>
+      </a>
+
+      <div class="wr-group">AI &amp; agents in production</div>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/from-a-15-second-chatbot-to-a-real-agentic-assistant-440j" rel="noopener">
+        <span><span class="wr-t">From a 15-Second Chatbot to a Real Agentic Assistant</span>
+        <span class="wr-d">Routing, sub-agent decomposition, and the latency work between demo and production.</span></span>
+        <span class="wr-m">9 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/turning-a-system-of-record-into-an-ai-agent-building-mcp-tools-on-azure-291f" rel="noopener">
+        <span><span class="wr-t">Turning a System of Record into an AI Agent: Building MCP Tools on Azure</span>
+        <span class="wr-d">Wrapping an enterprise system as tools a model can reason over safely.</span></span>
+        <span class="wr-m">7 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/building-and-deploying-a-microsoft-teams-bot-on-azure-end-to-end-462f" rel="noopener">
+        <span><span class="wr-t">Building and Deploying a Microsoft Teams Bot on Azure — End to End</span>
+        <span class="wr-d">The full path: Bot Framework, App Service, Teams Admin Center, and the parts nobody documents.</span></span>
+        <span class="wr-m">13 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/we-built-our-own-ai-pr-reviewer-for-azure-devops-then-benchmarked-it-against-coderabbit-and-5dne" rel="noopener">
+        <span><span class="wr-t">We Built Our Own AI PR Reviewer — Then Benchmarked It Against CodeRabbit</span>
+        <span class="wr-d">Build-vs-buy settled with numbers instead of opinions.</span></span>
+        <span class="wr-m">5 min</span>
+      </a>
+
+      <div class="wr-group">Security, observability, reliability</div>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/security-isnt-a-checklist-its-a-quarterly-habit-how-we-protect-our-enterprise-applications-49f5" rel="noopener">
+        <span><span class="wr-t">Security Isn't a Checklist — It's a Quarterly Habit</span>
+        <span class="wr-d">The per-application assessment framework, and why it gets re-run every quarter.</span></span>
+        <span class="wr-m">6 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/app-insights-by-example-a-paste-and-run-playbook-for-your-stack-4cg2" rel="noopener">
+        <span><span class="wr-t">App Insights by Example — a Paste-and-Run Playbook</span>
+        <span class="wr-d">Correlated traces and the KQL that turns a distributed estate into one readable timeline.</span></span>
+        <span class="wr-m">7 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/load-testing-a-production-app-on-azure-how-i-ran-it-measured-it-and-what-it-taught-me-28nc" rel="noopener">
+        <span><span class="wr-t">Load-Testing a Production App on Azure</span>
+        <span class="wr-d">How I ran it, what P95 actually told me, and the capacity plan that came out of it.</span></span>
+        <span class="wr-m">6 min</span>
+      </a>
+
+      <div class="wr-group">Platform engineering &amp; developer experience</div>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/from-15-manual-deployments-to-2-yaml-templates-scaling-azure-devops-pipelines-for-iis-hosted-apps-3884" rel="noopener">
+        <span><span class="wr-t">From 15+ Manual Deployments to 2 YAML Templates</span>
+        <span class="wr-d">Making release day boring, on purpose.</span></span>
+        <span class="wr-m">8 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/one-pipeline-sixteen-databases-parameterised-sql-deployments-in-azure-devops-38nd" rel="noopener">
+        <span><span class="wr-t">One Pipeline, Sixteen Databases</span>
+        <span class="wr-d">Parameterised SQL deployments that don't multiply with the environment count.</span></span>
+        <span class="wr-m">5 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/i-built-my-own-ai-workspace-for-outlook-and-teams-one-html-file-zero-servers-32c5" rel="noopener">
+        <span><span class="wr-t">I Built My Own AI Workspace for Outlook and Teams — One HTML File, Zero Servers</span>
+        <span class="wr-d">MSAL + Graph + an LLM, with no backend to own. Live on GitHub Pages.</span></span>
+        <span class="wr-m">5 min</span>
+      </a>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/microsoft-cloud-and-ai-innovation-day-bengaluru-what-i-saw-what-i-learned-and-what-im-taking-2bj6" rel="noopener">
+        <span><span class="wr-t">Microsoft Cloud and AI Innovation Day, Bengaluru — Field Notes</span>
+        <span class="wr-d">Fabric IQ, ontology-grounded agents, frontier tuning — and what I took back into our roadmap.</span></span>
+        <span class="wr-m">10 min</span>
+      </a>
+
+      <div class="wr-group">Design patterns, in plain English — an 8-part series</div>
+      <a class="wr-item" href="https://dev.to/vicky_acedia/singleton-in-c-stop-writing-it-like-its-2005-1jmc" rel="noopener">
+        <span><span class="wr-t">Singleton, Factory Method, Builder, Adapter, Decorator, Facade, Proxy, Composite</span>
+        <span class="wr-d">Each classic GoF pattern explained through an everyday object, in C#. Written to teach my own team.</span></span>
+        <span class="wr-m">8 posts</span>
+      </a>
+
+      <div class="wr-foot">Full archive — 26 posts and counting: <a href="https://dev.to/vicky_acedia" rel="noopener">dev.to/vicky_acedia</a></div>
     </div>
   </div>
 </section>
@@ -493,11 +730,16 @@
     <div class="two-col">
       <div class="panel reveal">
         <div class="k">Recognition &amp; leadership</div>
+        <div class="cert">
+          <div class="cert-k">Newest — July 2026</div>
+          <div class="cert-t">Promoted to Senior Technical Lead</div>
+          <p>Effective 31 July 2026. Follows the <strong>Impact Player</strong> award for Q2 2026 (Apr–Jun) — certificate signed by the President &amp; COO and the Head of HR, APAC.</p>
+        </div>
         <ul>
-          <li><strong>2024 Pinnacle Team Award</strong> · <strong>2025 Pinnacle Nominee</strong> (Dream Team) · <strong>SPOT Award</strong> — Execution &amp; Innovation · Bronze Badge — Learning Credits</li>
+          <li><strong>2025 Pinnacle Nominee</strong> (Dream Team) · <strong>2024 Pinnacle Team Award</strong> · <strong>SPOT Award</strong> — Execution &amp; Innovation · Bronze Badge — Learning Credits</li>
           <li>Demoed AI systems directly to the <strong>CEO and COO</strong> — demo-first delivery strategy to secure executive buy-in before scaling</li>
           <li>Built <strong>3 new org capabilities</strong> from zero: the Fabric Data Lake team, the Automation Testing practice, and AI Agent engineering</li>
-          <li>Trained <strong>3 fresher batches</strong> into production-ready engineers; led ~25 engineers across platform, AI, integration, data and QA</li>
+          <li>Trained <strong>3 fresher batches</strong> into production-ready engineers; lead ~25 engineers across platform, AI, integration, data and QA</li>
           <li>Led the <strong>EU rollout in Serbia</strong> — 2,000+ employees onboarded onto one operating framework in 2 months</li>
           <li>Embedded <strong>AI-first engineering practices</strong> — prompt engineering as a daily force multiplier for architecture, code, debugging and docs</li>
         </ul>
@@ -505,10 +747,10 @@
       <div class="panel reveal">
         <div class="k">In public / currently sharpening</div>
         <ul>
+          <li><strong><a href="#writing">26 published write-ups</a></strong> — the reasoning behind every system above, in the open</li>
           <li><strong><a href="https://github.com/av-vignesh" rel="noopener">github.com/av-vignesh</a></strong> — incl. <strong>Orbit</strong>: a single-file Microsoft 365 workspace (MSAL + Graph — calendar, mail, meeting transcripts) with AI summarization, live on GitHub Pages</li>
           <li><strong>Microsoft AI Innovation Day</strong> — attended; wrote a full field-notes debrief on Fabric IQ/ontology, agent architectures and frontier tuning — <a href="https://dev.to/vicky_acedia/microsoft-cloud-and-ai-innovation-day-bengaluru-what-i-saw-what-i-learned-and-what-im-taking-2bj6" rel="noopener">read it</a></li>
-          <li>Start here: <strong><a href="https://dev.to/vicky_acedia/how-i-decided-to-move-140-consumption-logic-apps-to-a-dedicated-hosting-plan-3m93" rel="noopener">the Logic Apps hosting decision</a></strong> · <a href="https://dev.to/vicky_acedia/i-built-my-own-ai-workspace-for-outlook-and-teams-one-html-file-zero-servers-32c5" rel="noopener">the Orbit build story</a> · <a href="https://dev.to/vicky_acedia/i-built-a-knowledge-graph-for-a-warehouse-with-no-foreign-keys-5fkp" rel="noopener">a knowledge graph for a warehouse with no foreign keys</a></li>
-          <li><strong><a href="https://dev.to/vicky_acedia" rel="noopener">dev.to/vicky_acedia</a></strong> — 26 articles in the first month: Azure integration at scale, agentic AI, design patterns, platform war stories</li>
+          <li>Ships phone-first, installable single-file apps on the side — the PWA pattern behind Orbit and a personal finance planner, both live on GitHub Pages</li>
           <li><strong>Currently deep in:</strong> model fine-tuning (SFT / LoRA) on Azure — working the ladder from baseline evals toward trained adapters</li>
           <li>Off the clock: Namakkal, Tamil Nadu — a garden that gets more attention than it admits, and travel whenever the release calendar allows</li>
         </ul>
@@ -525,7 +767,7 @@
         <div class="eyebrow">Capabilities</div>
         <h2>The full toolbox</h2>
       </div>
-      <span class="hint">// deep on Azure — the patterns travel to any cloud</span>
+      <span class="hint">Deep on Azure — the patterns travel to any cloud</span>
     </div>
     <div class="skill-rows reveal">
       <div class="skill-row">
@@ -565,6 +807,12 @@
         </div>
       </div>
       <div class="skill-row">
+        <div class="k">Practice</div>
+        <div class="chips">
+          <span class="chip hot">System design</span><span class="chip">Functional flow definition</span><span class="chip">Security assessment framework</span><span class="chip">Observability design</span><span class="chip">Load testing &amp; capacity</span><span class="chip">UAT &amp; release management</span><span class="chip">Automation testing</span>
+        </div>
+      </div>
+      <div class="skill-row">
         <div class="k">Tools</div>
         <div class="chips">
           <span class="chip">Claude</span><span class="chip">GitHub Copilot</span><span class="chip">ChatGPT</span><span class="chip">M365 Copilot</span><span class="chip">Application Insights</span><span class="chip">Docker</span><span class="chip">Postman</span><span class="chip">JMeter</span>
@@ -587,8 +835,8 @@
       <div class="stint reveal">
         <div class="when">Sep 2021 — Present</div>
         <h3>Orion Innovation</h3>
-        <div class="role">Technical Lead — operating at enterprise-architect scope</div>
-        <p>Own architecture and delivery for enterprise platforms serving 5,000+ employees. Scope grew from a single platform to the full internal estate — applications, the integration backbone, the data lake, and the AI agent ecosystem — plus leadership of ~25 engineers. The title stayed the same. The blast radius didn't.</p>
+        <div class="role">Senior Technical Lead (Jul 2026 – present) · Technical Lead (Sep 2021 – Jul 2026)</div>
+        <p>Promoted to Senior Technical Lead effective 31 July 2026. Own architecture and delivery for enterprise platforms serving 5,000+ employees. Scope grew from a single platform to the full internal estate — applications, the integration backbone, the data lake, the AI agent ecosystem, and the security and observability architecture around them — plus leadership of ~25 engineers.</p>
       </div>
       <div class="stint reveal">
         <div class="when">Apr 2019 — Sep 2021</div>
@@ -612,7 +860,7 @@
     <div class="eyebrow reveal">Contact</div>
     <h2 class="reveal">Hiring for platform, AI, or integration architecture?</h2>
     <p class="reveal">I'm looking for a role where the title matches the scope. A short call is the fastest way to know — reach out.</p>
-    <div class="link-row reveal">
+    <div class="cta-row reveal">
       <a class="btn solid" href="mailto:aakashvicky23@gmail.com">aakashvicky23@gmail.com</a>
       <a class="btn" href="tel:+919486304676">+91 94863 04676</a>
       <a class="btn" href="https://linkedin.com/in/vignesh-athiappan-a00546139" rel="noopener">LinkedIn</a>
@@ -622,7 +870,6 @@
     </div>
     <div class="contact-meta">
       <span>Namakkal, Tamil Nadu, India</span>
-      <span>[Notice period / availability]</span>
       <span>References on request</span>
     </div>
   </div>
@@ -636,10 +883,30 @@
 </footer>
 
 <script>
+  // Scroll-reveal (CSS disables under prefers-reduced-motion)
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // fig. 1 nodes + any #sys-/#g- link: scroll to the row and open it
+  function openHashTarget() {
+    const id = location.hash.slice(1);
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.tagName === 'DETAILS') { el.open = true; }
+    else if (el.classList.contains('sys-group')) {
+      const d = el.nextElementSibling;
+      if (d && d.tagName === 'DETAILS') d.open = true;
+    }
+  }
+  window.addEventListener('hashchange', openHashTarget);
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#sys-"], a[href^="#g-"]');
+    if (a) setTimeout(openHashTarget, 0);
+  });
+  openHashTarget();
 </script>
 </body>
 </html>
